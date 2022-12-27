@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :role
       t.integer :followers
       t.integer :following
+      t.string :password_digest
 
       t.timestamps
     end

@@ -9,6 +9,7 @@ one:
   role: MyString
   followers: 1
   following: 1
+  password_digest: MyString
 
 two:
   first_name: MyString
@@ -19,3 +20,4 @@ two:
   role: MyString
   followers: 1
   following: 1
+  password_digest: MyString
