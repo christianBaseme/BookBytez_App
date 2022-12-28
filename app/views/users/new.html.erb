@@ -1,14 +1,26 @@
 <h1>Sign Up</h1>
 
-<%= form_with(model: @user, url: users_path, method: :post) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+<%= form_tag(model: @user, url: signup_path, method: :post) do %>
+  <div> <br> <%= label_tag :First_name %>
+    <br> <%= text_field_tag :first_name %>
+  </div>
 
-  <%= form.label :email %>
-  <%= form.email_field :email %>
+  <div> <br> <%= label_tag :Second_name %>
+     <br><%= text_field_tag :second_name %>
+  </div>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+  <div>
+    <br> <%= label_tag :email %>
+    <br> <%= email_field_tag :email %>
+  </div>
 
-  <%= form.submit %>
+<div> <br> <%= label_tag :password %>
+  <br> <%= password_field_tag :password %>
+  </div>
+
+<div> <br> <%= label_tag :password_confirmation %>
+  <br> <%= password_field_tag :password_confirmation %>
+  </div>
+
+  <br> <%= submit_tag "Sign Up", class: "btn btn-primary"%>
 <% end %>
