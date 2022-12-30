@@ -1,19 +1,28 @@
 class SessionsController < ApplicationController
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   def new
 
   end
 
+  # def log_in(@user)
+  #   # code here
+  # end
+
   def create
 
 
-    username = params[:username]
+    email = params[:email]
     password = params[:password]
-    user = User.find_by(username: username)
-    if user && user.authenticate(password)
-      log_in(user)
-      redirect_to root_path
+    @user = User.find_by(email: email)
+    if @user && @user.authenticate(password)
+      def log_in
+        session[:@user_id] = @user.id
+        flash[:notice] = 'Valid email/password combination'
+      end
+      redirect_to @user
     else
-      flash.now[:danger] = 'Invalid username or password'
+      flash[:notice] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Invalid @username or password gmr;elkwmglkergklmr;elmgwlkmre;klgmlkerm;glkrmewlkgmrl;kewmgklrmew;lkgmrklewmg;lkmerklwgmr;lkemwgklmerklgmrk;lewmgklmerklwmgklmerk;lgmklermgkl;merwklgmkl;erwmgkl;ermlmklgrmkle;mgklr;emwlkgmer'
       render 'new'
     end
   end

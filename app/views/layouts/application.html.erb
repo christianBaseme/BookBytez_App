@@ -2,7 +2,10 @@
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <head>
-  <title><%= content_for :title %> | BookBytez </title>
+<!--  <%#= content_for :title %> is used display custom titles from different pages-->
+<!--  e.g the homepage has given title homepage therefore when the user clicks the title on the favcon
+becomes homepage..... BookBytez instead of just BookBytez -->
+  <title> <%= content_for :title %> BookBytez</title>
 </head>
 <body>
 <header>

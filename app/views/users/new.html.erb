@@ -1,26 +1,29 @@
-<h1>Sign Up</h1>
 
-<%= form_tag(model: @user, url: signup_path, method: :get) do %>
-  <div> <br> <%= label_tag :First_name %>
-    <br> <%= text_field_tag :first_name %>
-  </div>
+<h1> Sign Up </h1>
 
-  <div> <br> <%= label_tag :Last_name %>
-     <br><%= text_field_tag :last_name %>
-  </div>
+<%= form_for @user, url: '/signup' do |f| %>
 
-  <div>
-    <br> <%= label_tag :email %>
-    <br> <%= email_field_tag :email %>
-  </div>
+  <br><%= f.label :first_name %>
+  <br><%= f.text_field :first_name %>
+  <br><%= f.label :Last_name %>
+  <br><%= f.text_field :last_name %>
+  <br><%= f.label :course %>
+  <div><%= f.text_field :course %></div>
+  <br><%= f.label :email %>
+  <br><%= f.text_field :email %>
+  <br><%= f.label :major %>
+  <div><%= f.text_field :major %></div>
+  <%#= @user.year %>
+  <%#= @user.bio %>
+  <br><%= f.label :role %>
+  <div><%= f.text_field :role %></div>
+<!--  <div><%#= f.text_field :followers %></div>-->
+<!--  <div><%#= f.text_field :following %></div>-->
 
-<div> <br> <%= label_tag :password %>
-  <br> <%= password_field_tag :password %>
-  </div>
-
-<div> <br> <%= label_tag :password_confirmation %>
-  <br> <%= password_field_tag :password_confirmation %>
-  </div>
-
-  <br> <%= submit_tag "Sign Up", class: "btn btn-primary"%>
+  <br><%= f.label :password %>
+  <br><%= f.password_field :password %>
+  <br><%= f.label :password_confirmation %>
+  <br><%= f.password_field :password_confirmation %>
+  <br>
+  <br><%= f.submit %>
 <% end %>
