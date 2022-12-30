@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:@user_id])
+  end
   def new
 
   end
@@ -17,7 +21,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(password)
       def log_in
         session[:@user_id] = @user.id
-        flash[:notice] = 'Valid email/password combination'
+        #flash[:notice] = 'Valid email/password combination'
       end
       redirect_to @user
     else
@@ -29,5 +33,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
+    session[:@user_id] = nil
+    redirect_to root_path
   end
 end
