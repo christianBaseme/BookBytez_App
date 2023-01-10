@@ -1,39 +1,33 @@
 class SessionsController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
+  include SessionsHelper
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:@user_id])
-  end
   def new
 
   end
 
-  # def log_in(@user)
-  #   # code here
-  # end
 
   def create
 
 
-    email = params[:email]
-    password = params[:password]
-    @user = User.find_by(email: email)
-    if @user && @user.authenticate(password)
-      def log_in
-        session[:@user_id] = @user.id
-        #flash[:notice] = 'Valid email/password combination'
-      end
+    # email = params[:email]
+    # password = params[:password]
+    @user = User.find_by_email(params.fetch(:session,{}).fetch(:email,"").downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      #session[:@user_id] = @user.id
+      sign_in @user
+      #redirect_back_or @user
       redirect_to @user
     else
-      flash[:notice] = 'Invalid email/password combination'
-      flash.now[:danger] = 'Invalid @username or password gmr;elkwmglkergklmr;elmgwlkmre;klgmlkerm;glkrmewlkgmrl;kewmgklrmew;lkgmrklewmg;lkmerklwgmr;lkemwgklmerklgmrk;lewmgklmerklwmgklmerk;lgmklermgkl;merwklgmkl;erwmgkl;ermlmklgrmkle;mgklr;emwlkgmer'
+      flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end
 
 
   def destroy
-    session[:@user_id] = nil
+    #session[:@user_id] = nil
+    sign_out
     redirect_to root_path
   end
 end

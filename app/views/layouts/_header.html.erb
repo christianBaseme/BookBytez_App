@@ -1,0 +1,63 @@
+
+
+
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+
+      </button>
+      <%#= link_to "BookBytez", root_path, id: "logo" %>
+      <a class="navbar-brand" href="#">BookBytez</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", '#' %></li>
+
+
+          <% if signed_in? %>
+            <li><%= link_to "Users", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                  </li>
+                </ul>
+              </ul>
+            </li>
+          <% else %>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="<%=login_path %>" ><span class="glyphicon glyphicon-log-in"></span> Sign in   </a></li>
+            </ul>
+<!--            <li><%#= link_to "Sign in", login_path %></li>-->
+
+        <% end %>
+
+        </ul>
+
+    </div>
+  </div>
+</nav>
+
+<% if !signed_in? %>
+  <style>
+      #fat-menu {
+          display: none;
+      }
+  </style>
+<% end %>

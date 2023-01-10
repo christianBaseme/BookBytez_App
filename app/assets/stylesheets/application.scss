@@ -1,0 +1,169 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*
+ *= require bootstrap
+ */
+
+nav {
+    background-color: #333;
+    color: #000;
+    text-align: right;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+nav ul li {
+    flex: 11;
+    align: right;
+}
+
+nav ul li a {
+    color: #C0C0C0;
+    display: block;
+    padding: 19px;
+    text-align: right;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #000;
+}
+.btn-primary {
+    background-color: #4169E1; /* Blue color */
+    border-color: #A9A9A9;
+    color: #A9A9A9;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #3373CC; /* Royal blue color on hover */
+    border-color: #3373CC;
+}
+
+
+
+/* universal */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 60px;
+}
+
+section {
+    overflow: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.center {
+    text-align: center;
+}
+
+.center h1 {
+    margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+}
+
+h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.7em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #999;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #4169E1;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    line-height: 0.695;
+}
+
+#logo:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* footer */
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    color: #222;
+
+}
+
+footer a {
+    color: #222;
+
+}
+
+footer a:hover {
+    color: #555;
+}
+
+footer small {
+    float: left;
+}
+
+footer ul {
+    float: right;
+    list-style: none;
+}
+
+footer ul li {
+    float: left;
+    margin-left: 10px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*.nav > li {*/
+/*    margin-left: 10px;*/
+/*}*/

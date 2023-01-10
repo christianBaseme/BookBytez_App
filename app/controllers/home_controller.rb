@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_with_http_digest
   def index
+
   end
+
+
 end

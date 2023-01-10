@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show ] #, :edit, :update, :destroy ]
+  before_filter :signed_in_user, only: [:show,:update ] #[:index, :edit, :update, :destroy]
+  before_filter :current_user, only: [:show,:edit, :update, :destroy] #[:index, :edit, :update, :destroy]
+
+  include SessionsHelper
+
 
   #the show method is typically used to display a single record from a database.
   def show
-    if @user.nil?
-      # Redirect the user to an appropriate page if the user is not found
-      redirect_to root_path, notice: "User not found"
+    @user = @current_user
+    if !current_user?(params[:id])
+      # flash[:error] = "You are not authorized to view this page."
+      flash[:warning]='Can only show profile of logged in user'
 
     end
-    # Ensure that the current user is the same as the user whose profile is being viewed
-    if @current_user != @user
-      # Redirect the user to their own profile if they are trying to view someone else's profile
-      redirect_to user_path(@current_user)
-    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -39,27 +45,28 @@ class UsersController < ApplicationController
 
 
 
-
-  # def create
-  #   @user = User.find_by(email: params[:session][:email])
-  #   if @user && @user.authenticate(params[:session][:password])
-  #     log_in @user
-  #     redirect_to @user
-  #   else
-  #     flash.now[:danger] = 'Invalid email/password combination'
-  #     render 'new'
-  #   end
-  # end
-
   private
 
-  def user_params
-    params.require(:user).permit(:first_name,:last_name, :course, :email,:major,:role,:followers,:following, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:first_name,:last_name, :course, :email,:major,:role,:followers,:following, :password, :password_confirmation)
+    end
 
 
-  def set_user
-    @user = User.find(id: params[:id])
-  end
+    def set_user
+      @user = User.find(params[:id])
+      redirect_to root_path if @user.nil?
+    end
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
 
 end

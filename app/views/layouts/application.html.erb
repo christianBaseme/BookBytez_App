@@ -1,35 +1,95 @@
+<!DOCTYPE html>
 <html>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <head>
-<!--  <%#= content_for :title %> is used display custom titles from different pages-->
-<!--  e.g the homepage has given title homepage therefore when the user clicks the title on the favcon
-becomes homepage..... BookBytez instead of just BookBytez -->
-  <title> <%= content_for :title %> BookBytez</title>
+  <title>BookBytez</title>
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+          margin-bottom: 0;
+          border-radius: 0;
+      }
+
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {height: 450px}
+
+      /* Set gray background color and 100% height */
+      .sidenav {
+          padding-top: 20px;
+          background-color: #f1f1f1;
+          height: 100%;
+      }
+
+      /*!* Set black background color, white text and some padding *!*/
+      /*footer {*/
+      /*    background-color: #555;*/
+      /*    color: white;*/
+      /*    padding: 15px;*/
+      /*}*/
+
+      /*!* On small screens, set height to 'auto' for sidenav and grid *!*/
+      /*@media screen and (max-width: 767px) {*/
+      /*    .sidenav {*/
+      /*        height: auto;*/
+      /*        padding: 15px;*/
+      /*    }*/
+      /*    .row.content {height:auto;}*/
+      /*}*/
+
+
+      .navbar {
+          margin-bottom: 0;
+          background-color: darkolivegreen;
+          z-index: 9999;
+          border: 0;
+          font-size: 12px !important;
+          line-height: 1.42857143 !important;
+          letter-spacing: 4px;
+          border-radius: 0;
+      }
+
+      .navbar li a, .navbar .navbar-brand {
+          color: darkgrey !important;
+      }
+
+      .navbar-nav li a:hover, .navbar-nav li.active a {
+          color: darkgoldenrod !important;
+          background-color: darkslategray !important;
+      }
+
+      .navbar-default .navbar-toggle {
+          border-color: transparent;
+          color: darkblue !important;
+      }
+
+
+  </style>
+  </head>
+
+
+
+</body>
+</html>
+
+
 </head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'Login', login_path %></li>
-      <li><%= link_to 'Sign Up', signup_path %></li>
-    </ul>
-  </nav>
+<%= render 'layouts/header' %>
 
-</header>
-<!--<div class="container">-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-12">-->
-<!--      <h1>BookBytez</h1>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<main>
-  <%= yield %>
-</main>
-<footer>
-  Copyright &copy; <%= Date.today.year %> BookBytez
-</footer>
+
+<div class="container">
+
+<br>
+  <br>
+  <br>
+
+<%= yield %>
+
+<%= render 'layouts/footer' %>
 </body>
 </html>
