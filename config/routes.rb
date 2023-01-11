@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/show'
+
   resources :users do
     member do
       get 'user'
