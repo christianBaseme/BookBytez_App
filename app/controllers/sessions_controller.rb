@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       #session[:@user_id] = @user.id
       sign_in @user
       #redirect_back_or @user
+      flash[:notice] = "Successfully logged in"
       redirect_to @user
     else
       flash.now[:error] = 'Invalid email/password combination'

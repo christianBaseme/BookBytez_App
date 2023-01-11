@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
+  resources :posts, only: [:create, :destroy]
 
   root to: 'home#index'
   get '/login', to:'sessions#new'

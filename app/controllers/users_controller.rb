@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   #the show method is typically used to display a single record from a database.
   def show
     @user = @current_user
+    @posts = @user.posts.paginate(page: params[:page])
     if !current_user?(params[:id])
       # flash[:error] = "You are not authorized to view this page."
       flash[:warning]='Can only show profile of logged in user'
@@ -57,12 +58,6 @@ class UsersController < ApplicationController
       redirect_to root_path if @user.nil?
     end
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

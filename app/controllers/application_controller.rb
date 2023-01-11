@@ -13,9 +13,16 @@ class ApplicationController < ActionController::Base
 
 
   protected
-  def current_user?(id)
-    @current_user.id.to_s == id
-  end
+    def current_user?(id)
+      @current_user.id.to_s == id
+    end
 
+  private
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to login_path, notice: "Please sign in."
+      end
+    end
 
 end

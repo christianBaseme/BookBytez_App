@@ -1,4 +1,5 @@
 <%= form_for @user do |f| %>
+  <% provide(:title, @user.name) %>
   <div class="form-group">
     <%= f.text_field :first_name, class: 'form-control' %>
     <%= f.text_field :last_name, class: 'form-control' %>
@@ -32,6 +33,26 @@
   <div class="form-group">
     <%= f.label :following %>
     <%= f.number_field :following, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    .
+    .
+    .
+    <aside>
+      .
+      .
+      .
+    </aside>
+    <div class="span8">
+      <% if @user.posts.any? %>
+        <h3>Posts (<%= @user.posts.count %>)</h3>
+        <ol class="posts">
+          <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
+      <% end %>
+    </div>
   </div>
 
   <%= f.submit 'Update', class: 'btn btn-primary' %>
