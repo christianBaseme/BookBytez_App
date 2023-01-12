@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get 'user'
+      # get 'user'
+      get :following, :followers
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

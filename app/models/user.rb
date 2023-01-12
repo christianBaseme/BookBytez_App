@@ -9,6 +9,8 @@ class User < ApplicationRecord
   # validates_presence_of :last_name
   has_many :posts,dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   def feed
     Post.where("user_id = ?", id)

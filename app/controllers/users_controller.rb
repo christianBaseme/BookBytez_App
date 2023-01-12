@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show ] #, :edit, :update, :destroy ]
   before_filter :signed_in_user, only: [:show,:update ] #[:index, :edit, :update, :destroy]
   before_filter :current_user, only: [:show,:edit, :update, :destroy] #[:index, :edit, :update, :destroy]
-  has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
-  has_many :followers, through: :reverse_relationships, source: :follower
+
 
 
 
