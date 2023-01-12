@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:create, :destroy]
+  resources :relatinoships, only: [:create, :destroy]
 
   root to: 'home#index'
   get '/login', to:'sessions#new'
