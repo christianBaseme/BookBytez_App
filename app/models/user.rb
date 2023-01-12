@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   validates_uniqueness_of :email
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -13,10 +14,37 @@ class User < ApplicationRecord
     Post.where("user_id = ?", id)
   end
 
-  private
-  def create_remember_token
-    self.remember_token = SecureRandom.urlsafe_base64
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+
   end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  private
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 
 

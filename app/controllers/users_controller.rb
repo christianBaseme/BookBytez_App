@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  include SessionsHelper
   before_action :set_user, only: [:show ] #, :edit, :update, :destroy ]
   before_filter :signed_in_user, only: [:show,:update ] #[:index, :edit, :update, :destroy]
   before_filter :current_user, only: [:show,:edit, :update, :destroy] #[:index, :edit, :update, :destroy]
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
 
 
-  include SessionsHelper
 
 
   #the show method is typically used to display a single record from a database.
@@ -12,7 +14,6 @@ class UsersController < ApplicationController
     @user = @current_user
     @posts = @user.posts.paginate(page: params[:page])
     if !current_user?(params[:id])
-      # flash[:error] = "You are not authorized to view this page."
       flash[:warning]='Can only show profile of logged in user'
 
     end
