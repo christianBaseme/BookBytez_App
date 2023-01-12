@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+
   validates_uniqueness_of :email
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
+  before_create :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   # validates_presence_of :email
   # validates_presence_of :first_name
   # validates_presence_of :last_name
