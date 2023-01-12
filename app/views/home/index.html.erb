@@ -9,6 +9,11 @@
         <%= render 'shared/post_form' %>
       </section>
     </aside>
+
+    <div class="span8">
+      <h3>Post Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
   </div>
 <% else %>
   <div class="center hero-unit">
@@ -23,18 +28,21 @@
       BookBytez is a revolutionary platform that connects students and educators, making collaboration on academics easy and seamless.
       With BookBytez, you can connect with your peers, share notes, and work together on group projects all in one place.
     </h3>
-      In addition to making it easy to collaborate, BookBytez also helps you save money on textbooks.
-      Our platform searches multiple retailers to find you the best deals on the books you need, so you never have to overpay again. With BookBytez, you can save hundreds of dollars on your textbooks each semester.
-    <h4>
-      BookBytez is also great for educators.
-      Our platform makes it easy for you to share class materials, assignments, and even grade students all in one place.
-      This makes it easier for you to stay organized and for students to access the materials they need to succeed.
-    </h4>
 
-    <h5>
-      BookBytez is the perfect solution for anyone looking to collaborate on academics and save money on textbooks.
-      Try it out today and see the difference it can make in your academic and financial success!
-    </h5>
+<!--    <h4>-->
+<!--      In addition to making it easy to collaborate, BookBytez also helps you save money on textbooks.-->
+<!--      Our platform searches multiple retailers to find you the best deals on the books you need, so you never have to overpay again. With BookBytez, you can save hundreds of dollars on your textbooks each semester.-->
+<!--    </h4>-->
+<!--    <h5>-->
+<!--      BookBytez is also great for educators.-->
+<!--      Our platform makes it easy for you to share class materials, assignments, and even grade students all in one place.-->
+<!--      This makes it easier for you to stay organized and for students to access the materials they need to succeed.-->
+<!--    </h5>-->
+
+<!--    <h6>-->
+<!--      BookBytez is the perfect solution for anyone looking to collaborate on academics and save money on textbooks.-->
+<!--      Try it out today and see the difference it can make in your academic and financial success!-->
+<!--    </h6>-->
 
 
     <%= link_to "Sign up!", '#', class: "btn btn-large btn-primary",:href => signup_path %>

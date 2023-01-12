@@ -8,6 +8,10 @@ class User < ApplicationRecord
   # validates_presence_of :last_name
   has_many :posts,dependent: :destroy
 
+  def feed
+    Post.where("user_id = ?", id)
+  end
+
   private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64

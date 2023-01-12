@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:show,:update ] #[:index, :edit, :update, :destroy]
   before_filter :current_user, only: [:show,:edit, :update, :destroy] #[:index, :edit, :update, :destroy]
 
+
   include SessionsHelper
 
 
