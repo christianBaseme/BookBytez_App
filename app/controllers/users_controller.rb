@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :set_user, only: [:show ] #, :edit, :update, :destroy ]
+  before_action :set_user, only: [:show , :edit, :update, :destroy , :following, :followers]
   before_filter :signed_in_user, only: [:show,:update ] #[:index, :edit, :update, :destroy]
   before_filter :current_user, only: [:show,:edit, :update, :destroy] #[:index, :edit, :update, :destroy]
+
+
 
 
 
@@ -45,6 +47,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
 
   private
