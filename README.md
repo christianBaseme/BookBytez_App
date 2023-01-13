@@ -5,7 +5,8 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version:
+2.6.6
 
 * System dependencies
 
@@ -22,4 +23,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# BookBytez_App
+# BookBytez_App 
