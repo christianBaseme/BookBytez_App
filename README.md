@@ -24,4 +24,4 @@ Things you may want to cover:
 
 * ...
 # BookBytez_App 
-The goal of this project is to design learn app that can help college students get textbooks easier - saving time and money in process - understand concepts from class and get help completing assignments in timely manner.
+The goal of this project is to design learning app that can help college students get textbooks easier - saving time and money in process - understand concepts from class and get help completing assignments in timely manner.
